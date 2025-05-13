@@ -1,0 +1,446 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section id="/" class="hero">
+    <div class="hero-container">
+        <div class="hero-image">
+            <img src="{{ url_for('static', filename='img/Img_5408.png') }}" alt="Enock Walasi">
+        </div>
+
+        <div class="hero-content">
+            <h4 class="hero-subtitle">Python Developer & Neuroscientist</h4>
+            <h1 class="hero-title"><span class="hi">Hi, I'm</span><br>Enock Walasi</h1>
+            <div class="dynamic-title">
+                <span class="title-rotator">Python Developer</span>
+                <span class="title-rotator">Web Developer</span>
+                <span class="title-rotator">Researcher</span>
+                <span class="title-rotator">Philosopher</span>
+                <span class="title-rotator">Neuroscientist</span>
+                <span class="title-rotator">Writer</span>
+                <span class="title-rotator">Rastafarian</span>
+                <span class="title-rotator">Entrepreneur</span>
+            </div>
+
+            <p class="hero-text">I create innovative solutions at the intersection of
+                <span class="highlight">code</span>,
+                <span class="highlight">neuroscience</span>
+                and
+                <span class="highlight">philosophy.</span></p>
+
+            <div class="tech-stack">
+                <span>Python</span>
+                <span>JavaScript</span>
+                <span>Cloud Services</span>
+                <span>Neuroscience</span>
+                <span>Research</span>
+                <span>Prompt Engineering</span>
+                <span>I.T. Support</span>
+                <span>Interpretations</span>
+            </div>
+
+            <div class="hero-cta">
+                <a href="#projects" class="cta-btn">View Projects</a>
+                <a href="#contact" class="cta-btn outline">Contact Me</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-indicator">
+        <span></span>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <div class="about-container">
+        <div class="about-image">
+            <img src="{{ url_for('static', filename='img/IMG_6392.png') }}" alt="Enock Walasi">
+        </div>
+
+        <div class="about-content">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>🧠 Neuro-Developer</h3>
+                    <p>With 3+ years in Python/Flask development and 17 years in IT support, I bridge technical expertise with neuroscience insights to create human-centered solutions.</p>
+                </div>
+
+                <div class="about-card">
+                    <h3>🌌 Spiritual Technologist</h3>
+                    <p>Specializing in numerical interpretation and celestial alignment analysis, I decode cosmic patterns to provide holistic solutions blending technology and spirituality.</p>
+                </div>
+            </div>
+
+            <div class="about-details">
+                <div class="detail-item">
+                    <span class="highlight">17+</span>
+                    <p>Years in IT Support</p>
+                </div>
+                <div class="detail-item">
+                    <span class="highlight">50+</span>
+                    <p>Projects Completed</p>
+                </div>
+            </div>
+
+            <blockquote class="philosophy-quote">
+                "I believe in code that breathes and solutions that resonate with both silicon and soul."
+            </blockquote>
+        </div>
+    </div>
+</section>
+
+<section id="experience" class="experience">
+  <div class="experience-container">
+      <h2 class="section-title">Professional Journey</h2>
+
+      <div class="timeline-wrapper">
+          <button class="nav-arrow prev">&larr;</button>
+
+          <div class="timeline-card active">
+              <div class="timeline-header">
+                  <div class="timeline-year">2008-Present</div>
+                  <h3>IT Support Specialist</h3>
+                  <div class="timeline-location">South Afadzato District</div>
+              </div>
+              <ul class="timeline-details">
+                  <li>Implemented network security solutions</li>
+                  <li>Developed Python automation scripts</li>
+                  <li>Conducted IT workshops</li>
+              </ul>
+              <div class="tech-stack">
+                  <span>Python</span>
+                  <span>Networking</span>
+                  <span>Linux</span>
+              </div>
+          </div>
+          <!-- 2021 Item -->
+            <div class="timeline-card" data-year="2021">
+                <div class="timeline-year">2022 - present</div>
+                <h3>Web Developer</h3>
+                <div class="timeline-location">Freelance</div>
+                <ul class="timeline-details">
+                    <li>Developed responsive business websites</li>
+                    <li>Implemented API integrations</li>
+                    <li>Created data visualization dashboards</li>
+                </ul>
+                <div class="tech-stack">
+                    <span>HTML/CSS</span>
+                    <span>JavaScript</span>
+                    <span>Flask</span>
+                    <span>MongoDB</span>
+                </div>
+            </div>
+            <!-- 2022 Item -->
+            <div class="timeline-card" data-year="2022">
+                <div class="timeline-year">2022 - present</div>
+                <h3>Neuroscience Researcher</h3>
+                <div class="timeline-location">Remote Collaboration</div>
+                <ul class="timeline-details">
+                    <li>Conducted brain function research</li>
+                    <li>Analyzed neurological patterns with Python</li>
+                    <li>Collaborated with international teams</li>
+                </ul>
+                <div class="tech-stack">
+                    <span>Python</span>
+                    <span>Pandas</span>
+                    <span>NumPy</span>
+                    <span>Data Analysis</span>
+                </div>
+            </div>
+            <!-- 2023 Item -->
+            <div class="timeline-card" data-year="2023">
+                <div class="timeline-year">2023 - Present</div>
+                <h3>Python Developer</h3>
+                <div class="timeline-location">Self-Employed</div>
+                <ul class="timeline-details">
+                    <li>Develop custom web applications with Flask/FastAPI</li>
+                    <li>Create and integrate RESTful APIs</li>
+                    <li>Build data visualization dashboards</li>
+                </ul>
+                <div class="tech-stack">
+                    <span>Python</span>
+                    <span>Flask</span>
+                    <span>FastAPI</span>
+                    <span>JavaScript</span>
+                </div>
+            </div>
+
+          <button class="nav-arrow next">&rarr;</button>
+      </div>
+
+      <div class="timeline-progress">
+          <div class="year-marker active">2020</div>
+          <div class="year-marker">2021</div>
+          <div class="year-marker">2022</div>
+          <div class="year-marker">2023</div>
+      </div>
+  </div>
+
+        <!-- Keep existing cosmic perspective content -->
+        <div class="spiritual-insight">
+            <h3>Cosmic Perspective</h3>
+            <blockquote>
+                "In the circle of life, what you give is what you receive. Our refusal to complete nature's cycle
+                by retaining what should be returned creates imbalance. True abundance flows through generous
+                participation in cosmic exchange."
+            </blockquote>
+            <div class="tech-stack">
+                <span>Energetic Balance</span>
+                <span>Cosmic Patterns</span>
+                <span>Universal Flow</span>
+                <span>Soulful Code</span>
+                <span>Cycle Completion</span>
+            </div>
+        </div>
+
+
+<section id="projects" class="projects-section">
+    <div class="projects-container">
+        <h2 class="section-title">Featured Creations</h2>
+
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <img src="https://picsum.photos/400/300?random=1"
+                         class="project-image"
+                         alt="Distance Calculator">
+                    <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">GeoDistance Calculator</h3>
+                    <p class="project-description">
+                        Intelligent mapping tool calculating optimal routes using geospatial algorithms.
+                    </p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Tkinter</span>
+                        <span>GeoPy</span>
+                    </div>
+                    <a href="https://github.com/waldis4u/distance-converter-in-python"
+                       class="project-link"
+                       target="_blank">
+                       🌍 View Code
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <img src="https://picsum.photos/400/300?random=2"
+                         class="project-image"
+                         alt="Social Platform">
+                    <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">SocialSphere</h3>
+                    <p class="project-description">
+                        Modern community platform with real-time interactions and dynamic content feeds.
+                    </p>
+                    <div class="project-tech">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>WebSocket</span>
+                    </div>
+                    <a href="https://github.com/waldis4u/socialbook"
+                       class="project-link"
+                       target="_blank">
+                       💬 Live Demo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Current Project -->
+            <div class="project-card highlight-card">
+                <div class="project-image-container">
+                    <img src="https://picsum.photos/400/300?random=3"
+                         class="project-image"
+                         alt="Portfolio Project">
+                    <div class="project-overlay"></div>
+                    <div class="project-ribbon">Active Development</div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Spiritual Portfolio</h3>
+                    <p class="project-description">
+                        This very site! A fusion of technical prowess and cosmic philosophy.
+                    </p>
+                    <div class="project-tech">
+                        <span>Flask</span>
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <a href="https://github.com/waldis4u/portfolio"
+                       class="project-link"
+                       target="_blank">
+                       🚀 Contribute
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="education" class="knowledge-section">
+    <div class="projects-container">
+        <h2 class="section-title">Knowledge Journey</h2>
+
+        <div class="knowledge-grid">
+            <!-- Education Cards -->
+            <div class="education-card">
+                <div class="degree-icon">🎓</div>
+                <h3>Neurobiology of Everyday Life</h3>
+                <p class="institution">University of Chicago</p>
+                <div class="tech-stack">
+                    <span>Completed 2022</span>
+                </div>
+            </div>
+
+            <div class="education-card">
+                <div class="degree-icon">💻</div>
+                <h3>Programming for Everyone</h3>
+                <p class="institution">University of Michigan</p>
+                <div class="tech-stack">
+                    <span>Completed 2021</span>
+                </div>
+            </div>
+
+            <!-- Add other education cards... -->
+        </div>
+
+        <!-- Achievements -->
+        <div class="achievement-card">
+            <div class="achievement-number">1</div>
+            <h3>Life-Saving Innovation</h3>
+            <p>Developed emergency response system using smartphone sensors:</p>
+            <ul class="timeline-details">
+                <li>Voice recognition fall detection</li>
+                <li>Automatic emergency alerts</li>
+                <li>Adopted by Apple & Samsung (2022)</li>
+            </ul>
+            <div class="tech-stack">
+                <span>Python</span>
+                <span>Voice Recognition</span>
+                <span>Mobile Integration</span>
+            </div>
+        </div>
+
+        <div class="achievement-card">
+            <div class="achievement-number">2</div>
+            <h3>Cosmic Philosophy</h3>
+            <div class="philosophy-badge">Why stars hide?</div>
+            <div class="philosophy-badge">Mathematics of Life</div>
+            <div class="philosophy-badge">Language of Nature</div>
+            <blockquote class="philosophy-quote">
+                "True understanding comes when we speak the universe's native tongue -
+                the language of light and energy."
+            </blockquote>
+        </div>
+
+        <div class="achievement-card">
+            <div class="achievement-number">3</div>
+            <h3>Multidimensional Perspective</h3>
+        <div class="perspective-visual">
+
+
+        <div class="coin-3d">
+        <div class="front">Head<br><span class="coin-subtext"></span></div>
+        <div class="edge"></div>
+        <div class="back">Tail<br><span class="coin-subtext"></span></div>
+
+    </div>
+
+    </div>
+            <p>Discovered hidden dimensions of reality through coin analysis:</p>
+            <div class="tech-stack">
+                <span>Quantum Perception</span>
+                <span>Cosmic Patterns</span>
+                <span>Reality Engineering</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mission Statements -->
+        <div class="perspective-mission">
+            <div class="mission-card">
+                <div class="mission-header">
+                    <div class="mission-icon">🌍</div>
+                    <h3>Universal Truths</h3>
+                </div>
+                <ul class="mission-list">
+                    <li>🔍 Clear facts over confusing theories</li>
+                    <li>🤝 Shared understanding for all</li>
+                    <li>💡 Answers that make real sense</li>
+                </ul>
+                <div class="mission-footer">
+                    <span class="mission-tag">Like a coin has two sides</span>
+                    <span class="mission-tag">Truth has many layers</span>
+                </div>
+            </div>
+
+            <div class="mission-card">
+                <div class="mission-header">
+                    <div class="mission-icon">❤️</div>
+                    <h3>Life Simplified</h3>
+                </div>
+                <ul class="mission-list">
+                    <li>🌱 Nature knows what's best</li>
+                    <li>💪 Your body holds the answers</li>
+                    <li>😊 Happiness is natural</li>
+                </ul>
+                <div class="mission-footer">
+                    <span class="mission-tag">Heads: What you see</span>
+                    <span class="mission-tag">Tails: What's really there</span>
+                </div>
+            </div>
+        </div>
+
+</section>
+
+<section id="mission" class="mission-section">
+    <div class="mission-container">
+        <h2 class="section-title">Our Promise to Humanity</h2>
+
+        <div class="mission-cards">
+            <!-- Truth Card -->
+            <div class="mission-card">
+                <div class="mission-icon">🔍</div>
+                <h3>Clear Truth for All</h3>
+                <ul class="simple-list">
+                    <li>No confusing theories</li>
+                    <li>Facts you can test yourself</li>
+                    <li>Answers that make sense</li>
+                </ul>
+            </div>
+
+            <!-- Life Card -->
+            <div class="mission-card">
+                <div class="mission-icon">❤️</div>
+                <h3>Life Made Simple</h3>
+                <ul class="simple-list">
+                    <li>Your body knows best</li>
+                    <li>Nature gives what we need</li>
+                    <li>Happiness is natural</li>
+                </ul>
+            </div>
+
+            <!-- Start Card -->
+            <div class="mission-card">
+                <div class="mission-icon">🚀</div>
+                <h3>Everyone Gets a Chance</h3>
+                <ul class="simple-list">
+                    <li>Find your special talent</li>
+                    <li>Learn useful skills free</li>
+                    <li>Make life your playground</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mission-statement">
+            <p>I believe: <span class="highlight">Life should be fun, fair, and full of wonder.</span></p>
+            <p>Like trees need sun and water, we all need truth and freedom to grow!</p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

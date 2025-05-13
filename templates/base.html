@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='img/unnamed.jpg') }}">>
+    <title>Enock Walasi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="{{ url_for('static', filename='js/mobile.js') }}"></script>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="/" class="logo">Waldis</a>
+
+            <button class="hamburger">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </button>
+
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#education">Education</a>
+                <a href="#mission">Mission</a>
+                <a href="#skills">Skills</a>
+                <a href="#philosophies">Philosophies</a>
+                <a href="#contact" class="contact-btn">Contact</a>
+                <button class="theme-toggle">🌓</button>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+    <!-- Add this before closing body tag -->
+    <script src="{{ url_for('static', filename='js/titles.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</body>
+</html>
