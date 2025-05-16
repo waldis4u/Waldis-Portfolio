@@ -66,8 +66,6 @@ p {
     --nav-bg: var(--dark-nav-bg);
 }
 
-}
-
 /* Add to dark theme */
 [data-theme="dark"] .philosophy-card,
 [data-theme="dark"] .about-card {
@@ -101,13 +99,33 @@ p {
 
 .logo {
     font-size: 2rem;
-    font-weight: 700;
-    background: #F9004D;
+    font-weight: 800;
+    background: linear-gradient(45deg, #F9004D, #FF6B35);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     text-decoration: none;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-shadow:
+        0 2px 4px rgba(249, 0, 77, 0.3),
+        0 4px 8px rgba(255, 107, 53, 0.2),
+        0 8px 16px rgba(255, 107, 53, 0.1);
+    transform-style: preserve-3d;
+}
+
+.logo:hover {
+    transform: translateY(-2px) scale(1.05);
+    text-decoration: none;
+    text-shadow:
+        0 4px 8px rgba(249, 0, 77, 0.4),
+        0 6px 12px rgba(255, 107, 53, 0.3),
+        0 10px 20px rgba(255, 107, 53, 0.2);
+}
+
+.logo:hover::after {
+    width: 100%;
 }
 
 .nav-links {
@@ -242,6 +260,52 @@ section {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+.flash-messages {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.flash {
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    animation: slideIn 0.3s ease-out;
+}
+
+.flash.success {
+    background: #2ecc71;
+    color: white;
+}
+
+.flash.danger {
+    background: #e74c3c;
+    color: white;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+/* Validation error styles */
+input:invalid, textarea:invalid {
+    border-color: #e74c3c !important;
+    animation: shake 0.5s ease-in-out;
+}
+
+input:valid, textarea:valid {
+    border-color: #2ecc71 !important;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+
 /* Hero Section */
 .hero {
     height: 100vh;
@@ -253,7 +317,7 @@ section {
     align-items: center;
     padding: 0 2rem;
     position: relative;
-    margin-top: 50px; /* Offset fixed nav height */
+    margin-top: 80px; /* Offset fixed nav height */
 }
 
 .hero-content {
@@ -399,16 +463,18 @@ section {
     z-index: 1;
 }
 
+
+/* Update animation timing */
 @keyframes titleSlide {
-    0%, 8.33% {  /* 0% to 2s (3s per title) */
+    0%, 6.66% {  /* 0% to 2s (3s per title) */
         opacity: 0;
         transform: translateY(20px);
     }
-    12.5%, 20.83% { /* 3s to 6s */
+    10%, 16.66% { /* 3s to 5s */
         opacity: 1;
         transform: translateY(0);
     }
-    25%, 100% { /* 6s to end */
+    20%, 100% { /* 6s to end */
         opacity: 0;
         transform: translateY(-20px);
     }
@@ -1400,6 +1466,10 @@ section {
     padding: 2rem;
 }
 
+.contact {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='%232C3639'/%3E%3C/svg%3E"); /* Dot pattern */
+}
+
 .connect-text {
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -1413,16 +1483,54 @@ section {
 }
 
 .contact-form {
-    background: rgba(255,255,255,0.05);
-    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4rem;
     border-radius: 15px;
-    border: 1px solid var(--heading-color);
+    border: 2px solid var(--heading-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
 }
 
 .theme-aware-input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
     background: var(--bg-color);
+    border: 2px solid var(--heading-color);
     color: var(--text-color);
-    border: 1px solid var(--heading-color);
+    font-family: var(--body-font);
+    transition: all 0.3s ease;
+}
+
+.theme-aware-input:focus {
+    outline: none;
+    border-color: #FF6B35;
+    box-shadow: 0 0 10px rgba(255,107,53,0.2);
+}
+
+textarea.theme-aware-input {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.btn {
+    background: linear-gradient(45deg, #FF6B35, #A27B5C);
+    color: white !important;
+    padding: 1rem 2.5rem;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+    width: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255,107,53,0.3);
 }
 
 .contact-details {
@@ -1442,41 +1550,127 @@ section {
     text-align: center;
 }
 
-
-/* Footer */
-.main-footer {
+/* In main.css */
+.cosmic-footer {
+    padding: 4rem 2rem;
+    text-align: center;
     background: var(--bg-color);
-    color: var(--light-text);
-    padding: 3rem 2rem;
-    margin-top: 4rem;
+    border-top: 1px solid var(--heading-color);
+    position: relative;
 }
 
 .footer-content {
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
-    text-align: center;
 }
 
-.footer-name {
-    font-size: 2rem;
+.cosmic-footer h3 {
+    font-size: 1.5rem;
+    color: var(--heading-color);
     margin-bottom: 0.5rem;
 }
 
-.footer-titles {
-    font-size: 1.1rem;
+.roles {
+    color: var(--text-color);
     opacity: 0.9;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
-.back-top {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+/* Social Links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.social-links a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--heading-color);
+    transform: translateY(-3px);
+}
+
+/* Universal Wisdom */
+.universal-wisdom {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+}
+
+.universal-wisdom blockquote {
+    font-style: italic;
+    color: var(--text-color);
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.universal-wisdom cite {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--heading-color);
+}
+
+/* Quantum Copyright */
+.quantum-copyright {
+    position: relative;
+    margin-top: 2rem;
+    padding-top: 2rem;
+}
+
+.quantum-copyright::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--heading-color),
+        transparent
+    );
+}
+
+.copyright {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    margin: 1rem 0;
+}
+
+.back-to-top {
+    display: inline-block;
+    color: var(--heading-color);
     text-decoration: none;
-    color: var(--light-text);
-    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    transition: opacity 0.3s ease;
 }
 
-.back-top:hover {
-    color: var(--light-color);
+.back-to-top:hover {
+    opacity: 0.8;
+}
+
+/* Quantum Particles */
+.quantum-particle {
+    position: absolute;
+    background: var(--heading-color);
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    animation: particle-float 3s infinite;
+}
+
+@keyframes particle-float {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(10px, -10px); }
+    50% { transform: translate(-5px, 5px); }
+    75% { transform: translate(5px, -5px); }
 }

@@ -1,21 +1,40 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_mail import Mail, Message
 import os
+import smtplib
 
 app = Flask(__name__)
+app.secret_key = os.environ.get('SECRET_KEY', 'development-key')
 
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USER')
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASS')
+# Email Configuration
+app.config.update(
+    MAIL_SERVER='smtp.gmail.com',
+    MAIL_PORT=465,
+    MAIL_USE_TLS=True,
+    MAIL_USERNAME=os.environ.get('MAIL_USER'),
+    MAIL_PASSWORD=os.environ.get('MAIL_PASS'),
+    MAIL_DEFAULT_SENDER=os.environ.get('MAIL_USER'),  # Add default sender
+    MAIL_DEBUG=True
+)
+
 mail = Mail(app)
+
+def test_smtp_connection():
+    try:
+        with smtplib.SMTP('smtp.gmail.com', 587) as server:
+            server.starttls()
+            server.login(os.environ.get('MAIL_USER'), os.environ.get('MAIL_PASS'))
+            print("✅ SMTP Connection Successful!")
+            return True
+    except Exception as e:
+        print(f"❌ SMTP Connection Failed: {str(e)}")
+        return False
 
 @app.route('/')
 def home():
     return render_template('index.html')
 
-@app.route('/contact', methods=['GET', 'POST'])
+@app.route('/contact', methods=['POST'])
 def contact():
     if request.method == 'POST':
         name = request.form.get('name', '').strip()
@@ -32,31 +51,43 @@ def contact():
             flash('Name must be between 3-50 characters', 'danger')
             return redirect(url_for('contact'))
 
+        if purpose not in ['collaboration', 'project', 'consultation', 'other']:
+            flash('Please select a valid purpose', 'danger')
+            return redirect(url_for('contact'))
+
         if len(message) < 20 or len(message) > 500:
             flash('Message must be between 20-500 characters', 'danger')
             return redirect(url_for('contact'))
 
         # Send mail
-        msg = Message(  # Was using message()
-            subject=f"[{purpose.capitalize()}] Message from {name}",
-            sender=email,
-            recipients=['kretoswaldis@gmail.com'],  # Fixed typo 'receipients'
-            body=f"From: {name} <{email}>\n\n{message}"
-            )
-
         try:
+            msg = Message(
+                subject=f"[{purpose.capitalize()}] Message from {name}",
+                recipients=['kretoswaldis@gmail.com'],  # Remove sender parameter
+                reply_to=email  # Add reply_to field
+            )
+            
+            # Set the message body
+            msg.body = f"""Name: {name}
+Email: {email}
+Purpose: {purpose.capitalize()}
+
+Message:
+{message}"""
+
             mail.send(msg)
-            flash('Your cosmic message has been transmitted!', 'success')
+            flash('🌌 Your message has been transmitted successfully!', 'success')
         except Exception as e:
-            flash('Message transmission failed. Try again later.', 'danger')
+            print(f"Mail error: {str(e)}")
+            flash('❌ Message transmission failed. Please try again later.', 'danger')
 
-        return redirect(url_for('contact'))
+    return redirect(url_for('home'))  # Redirect to home instead of contact
 
-    return render_template('contact.html')
-
-
-
+    return render_template('index.html')
 # Add similar routes for other pages
 
+
 if __name__ == '__main__':
+    # Test SMTP connection before starting the app
+    test_smtp_connection()
     app.run(debug=True)

@@ -8,3 +8,8 @@ function updateCopyrightYear() {
 
 // Initialize when DOM loads
 document.addEventListener('DOMContentLoaded', updateCopyrightYear);
+
+// Optional: Update year immediately if DOM is already loaded
+if (document.readyState === 'complete') {
+    updateCopyrightYear();
+}

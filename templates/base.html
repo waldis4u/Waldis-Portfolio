@@ -36,10 +36,20 @@
         </div>
     </nav>
 
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
     {% block content %}{% endblock %}
     <!-- Add this before closing body tag -->
     <script src="{{ url_for('static', filename='js/titles.js') }}"></script>
     <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
-    <script src="script.js" defer></script>
-</body>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </html>

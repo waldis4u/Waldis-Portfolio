@@ -9,17 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
         "Coacher",
         "Healer",
         "Rastafarian",
-        "Entrepreneur"
+        "Entrepreneur"  // Add any new titles here
     ];
 
     const container = document.querySelector('.dynamic-title');
     container.innerHTML = ''; // Clear existing titles
 
+    // Add visibility control
     titles.forEach((title, index) => {
         const span = document.createElement('span');
         span.className = 'title-rotator';
         span.textContent = title;
-        span.style.animationDelay = `${index * 3}s`; // Set delay dynamically
+        span.style.animation = `titleSlide 30s infinite ${index * 3}s`; // 10 titles × 3s each
         container.appendChild(span);
     });
 });
