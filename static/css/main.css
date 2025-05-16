@@ -23,7 +23,7 @@ body {
 
 /* Apply Inter to all headings */
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--heading-font);
+    font-family: var(--heading-color);
     font-weight: 600;
     color: var(--light-text);
 }
@@ -33,7 +33,7 @@ p {
     font-family: var(--body-font);
     font-weight: 400;
     line-height: 1.6;
-    color: var(--dark-text);
+    color: var(--light-text);
 }
 
 /* Specific heading adjustments */
@@ -64,6 +64,19 @@ p {
     --text-color: var(--dark-text);
     --heading-color: var(--dark-heading);
     --nav-bg: var(--dark-nav-bg);
+}
+
+}
+
+/* Add to dark theme */
+[data-theme="dark"] .philosophy-card,
+[data-theme="dark"] .about-card {
+    background: rgba(255,255,255,0.05);
+    border-color: var(--heading-color);
+}
+
+[data-theme="dark"] .philosophy-category {
+    color: var(--heading-color);
 }
 
 .main-nav {
@@ -240,7 +253,7 @@ section {
     align-items: center;
     padding: 0 2rem;
     position: relative;
-    margin-top: 70px; /* Offset fixed nav height */
+    margin-top: 50px; /* Offset fixed nav height */
 }
 
 .hero-content {
@@ -261,7 +274,8 @@ section {
 }
 
 .hero-title {
-    font-size: 5rem;
+    font-size: 4rem;
+    line-height: 1.1;
     margin-bottom: 1.5rem;
     background: var(--heading-color);
     -webkit-background-clip: text;
@@ -1214,4 +1228,255 @@ section {
     padding: 2rem;
     border-radius: 15px;
     background: rgba(255,107,53,0.1);
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 8rem 2rem;
+    background: var(--bg-color);
+    border-top: 2px solid var(--heading-color);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.skill-card {
+    background: rgba(255,255,255,0.03);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid var(--heading-color);
+    transition: transform 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+}
+
+.skill-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.skill-icon {
+    font-size: 1.8rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-tags span {
+    background: rgba(100,181,246,0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid var(--heading-color);
+}
+
+/* Brain Visualization */
+.skills-visual {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.rotating-brain {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    animation: brain-rotate 15s infinite linear;
+}
+
+.brain-lobe {
+    position: absolute;
+    background: rgba(255,107,53,0.1);
+    border: 2px solid var(--heading-color);
+    border-radius: 50%;
+    padding: 1rem;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.front { left: 0; top: 20px; }
+.back { right: 0; top: 20px; }
+.brain-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+}
+
+@keyframes brain-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    .skill-tags span {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .rotating-brain {
+        width: 120px;
+        height: 120px;
+    }
+
+    .brain-lobe {
+        width: 50px;
+        height: 50px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Philosophy Section */
+.philosophy {
+    padding: 4rem 2rem;
+    background: var(--bg-color);
+}
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.philosophy-card {
+    background: var(--bg-color);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid var(--heading-color);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.philosophy-category {
+    color: var(--light-text);
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.philosophy-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.philosophy-list li {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.philosophy-list li::before {
+    content: "•";
+    color: var(--light-text);
+    position: absolute;
+    left: 0;
+}
+
+/* Contact Section */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.connect-text {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.connect-subtext {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: var(--light-text);
+    opacity: 0.9;
+}
+
+.contact-form {
+    background: rgba(255,255,255,0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid var(--heading-color);
+}
+
+.theme-aware-input {
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--heading-color);
+}
+
+.contact-details {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.detail-item i {
+    font-size: 1.5rem;
+    width: 30px;
+    text-align: center;
+}
+
+
+/* Footer */
+.main-footer {
+    background: var(--bg-color);
+    color: var(--light-text);
+    padding: 3rem 2rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-name {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-titles {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.back-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--light-text);
+    margin-top: 1.5rem;
+}
+
+.back-top:hover {
+    color: var(--light-color);
 }

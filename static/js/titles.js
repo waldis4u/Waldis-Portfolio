@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const titles = [
-        "Python Developer",
+        "Full Stack Developer",
         "Web Developer",
         "Researcher",
         "Philosopher",
         "Neuroscientist",
         "Writer",
+        "Coacher",
+        "Healer",
         "Rastafarian",
         "Entrepreneur"
     ];
