@@ -1,19 +1,23 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_mail import Mail, Message
 import os
+from dotenv import load_dotenv
 import smtplib
 
+load_dotenv()
+
 app = Flask(__name__)
-app.secret_key = os.environ.get('SECRET_KEY', 'development-key')
+
+app.secret_key = os.getenv('SECRET_KEY')
 
 # Email Configuration
 app.config.update(
     MAIL_SERVER='smtp.gmail.com',
-    MAIL_PORT=465,
-    MAIL_USE_TLS=True,
-    MAIL_USERNAME=os.environ.get('MAIL_USER'),
-    MAIL_PASSWORD=os.environ.get('MAIL_PASS'),
-    MAIL_DEFAULT_SENDER=os.environ.get('MAIL_USER'),  # Add default sender
+    MAIL_PORT=465,  # ← Change to 465 (SSL)
+    MAIL_USE_SSL=True,  # ← Change to SSL
+    MAIL_USERNAME=os.getenv('MAIL_USER'),
+    MAIL_PASSWORD=os.getenv('MAIL_APP_PASSWORD'),
+    MAIL_DEFAULT_SENDER=(os.getenv('MAIL_USER'), "Waldiss_portfolio"),
     MAIL_DEBUG=True
 )
 
@@ -21,13 +25,12 @@ mail = Mail(app)
 
 def test_smtp_connection():
     try:
-        with smtplib.SMTP('smtp.gmail.com', 587) as server:
-            server.starttls()
-            server.login(os.environ.get('MAIL_USER'), os.environ.get('MAIL_PASS'))
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:  # ← Use SMTP_SSL
+            server.login(os.getenv('MAIL_USER'), os.getenv('MAIL_APP_PASSWORD'))
             print("✅ SMTP Connection Successful!")
             return True
     except Exception as e:
-        print(f"❌ SMTP Connection Failed: {str(e)}")
+        print(f"❌ SMTP Connection Failed: {type(e).__name__}, {str(e)}")
         return False
 
 @app.route('/')
@@ -63,31 +66,27 @@ def contact():
         try:
             msg = Message(
                 subject=f"[{purpose.capitalize()}] Message from {name}",
-                recipients=['kretoswaldis@gmail.com'],  # Remove sender parameter
-                reply_to=email  # Add reply_to field
-            )
-            
-            # Set the message body
+                sender=app.config['MAIL_DEFAULT_SENDER'],  # ← Explicit sender
+                recipients=['kretoswaldis@gmail.com'],
+                reply_to=email
+                )
             msg.body = f"""Name: {name}
 Email: {email}
 Purpose: {purpose.capitalize()}
 
 Message:
 {message}"""
-
             mail.send(msg)
             flash('🌌 Your message has been transmitted successfully!', 'success')
         except Exception as e:
-            print(f"Mail error: {str(e)}")
+            print(f"Mail error: {type(e).__name__}, {str(e)}")
             flash('❌ Message transmission failed. Please try again later.', 'danger')
-
-    return redirect(url_for('home'))  # Redirect to home instead of contact
+        return redirect(url_for('home'))
 
     return render_template('index.html')
-# Add similar routes for other pages
-
 
 if __name__ == '__main__':
-    # Test SMTP connection before starting the app
-    test_smtp_connection()
-    app.run(debug=True)
+    if test_smtp_connection():
+        app.run(debug=True)
+    else:
+        print("Exiting due to SMTP connection failure.")
