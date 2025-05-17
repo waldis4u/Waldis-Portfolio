@@ -13,11 +13,11 @@ app.secret_key = os.getenv('SECRET_KEY')
 # Email Configuration
 app.config.update(
     MAIL_SERVER='smtp.gmail.com',
-    MAIL_PORT=465,  
+    MAIL_PORT=465,
     MAIL_USE_SSL=True,
     MAIL_USERNAME=os.getenv('MAIL_USER'),
     MAIL_PASSWORD=os.getenv('MAIL_APP_PASSWORD'),
-    MAIL_DEFAULT_SENDER=(os.getenv('MAIL_USER'), "Waldiss_portfolio"),
+    MAIL_DEFAULT_SENDER=(os.getenv('MAIL_USER'), "Waldis_portfolio"),
     MAIL_DEBUG=True
 )
 
