@@ -13,8 +13,8 @@ app.secret_key = os.getenv('SECRET_KEY')
 # Email Configuration
 app.config.update(
     MAIL_SERVER='smtp.gmail.com',
-    MAIL_PORT=465,  # ← Change to 465 (SSL)
-    MAIL_USE_SSL=True,  # ← Change to SSL
+    MAIL_PORT=465,  
+    MAIL_USE_SSL=True,
     MAIL_USERNAME=os.getenv('MAIL_USER'),
     MAIL_PASSWORD=os.getenv('MAIL_APP_PASSWORD'),
     MAIL_DEFAULT_SENDER=(os.getenv('MAIL_USER'), "Waldiss_portfolio"),
@@ -87,6 +87,7 @@ Message:
 
 if __name__ == '__main__':
     if test_smtp_connection():
-        app.run(debug=True)
+        port = int(os.environ.get("PORT", 5000))
+        app.run(host='0.0.0.0', port=port, debug=False)
     else:
         print("Exiting due to SMTP connection failure.")
